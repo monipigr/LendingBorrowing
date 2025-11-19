@@ -248,9 +248,7 @@ contract LendingProtocol is Ownable, ReentrancyGuard, Pausable {
             users[msg.sender].totalBorrowed >= amount,
             "Insufficient borrow"
         );
-
         IERC20(token).safeTransferFrom(msg.sender, address(this), amount);
-
         users[msg.sender].totalBorrowed -= amount;
         users[msg.sender].lastUpdateTime = block.timestamp;
         markets[token].totalBorrow -= amount;
@@ -279,10 +277,8 @@ contract LendingProtocol is Ownable, ReentrancyGuard, Pausable {
             "Insufficient borrow to liquidate"
         );
         require(isLiquidatable(user), "Position is not liquidatable");
-
         uint256 collateralToSeize = (amount *
             (BASIS_POINTS + LIQUIDATION_PENALTY)) / BASIS_POINTS;
-
         // Find collateral to seize
         address collateralToken = findBestCollateral(user);
         require(collateralToken != address(0), "No collateral to seize");
@@ -290,7 +286,6 @@ contract LendingProtocol is Ownable, ReentrancyGuard, Pausable {
             userDeposits[user][collateralToken] >= collateralToSeize,
             "Insufficient collatera"
         );
-
         // Transfer borrowed tokens from liquidator
         IERC20(token).safeTransferFrom(msg.sender, address(this), amount);
 
