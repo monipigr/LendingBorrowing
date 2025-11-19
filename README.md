@@ -1,4 +1,4 @@
-# Lending & Borrowing Protocol
+# 🏦 Lending & Borrowing Protocol
 
 A decentralized Lending & Borrowing Protocol that enables users to deposit assets as collateral, borrow tokens, repay loans, and be liquidated if their position becomes unhealthy. The protocol supports multiple markets, each with its own collateral factor, supply rate, and borrow rate. Built with Solidity and Foundry, with a complete testing suite.
 

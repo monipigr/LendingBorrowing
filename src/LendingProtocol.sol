@@ -286,6 +286,7 @@ contract LendingProtocol is Ownable, ReentrancyGuard, Pausable {
             userDeposits[user][collateralToken] >= collateralToSeize,
             "Insufficient collatera"
         );
+
         // Transfer borrowed tokens from liquidator
         IERC20(token).safeTransferFrom(msg.sender, address(this), amount);
 
@@ -334,6 +335,7 @@ contract LendingProtocol is Ownable, ReentrancyGuard, Pausable {
                 sigData.deadline
             )
         );
+
         bytes32 ethSignedMessage = MessageHashUtils.toEthSignedMessageHash(
             messageHash
         );
